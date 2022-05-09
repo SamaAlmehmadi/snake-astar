@@ -1,33 +1,6 @@
 function Utils(params) {
   var blockSize = params.blockSize;
   var ctx = document.querySelector("canvas").getContext("2d");
-
-  function drawStroke(start, end, color) {
-    ctx.beginPath();
-    ctx.setLineDash([5, 3]);
-    ctx.moveTo((start[0] * blockSize) + (blockSize / 2), (start[1] * blockSize) + (blockSize / 2));
-    ctx.lineTo((end[0] * blockSize) + (blockSize / 2), (end[1] * blockSize) + (blockSize / 2));
-    ctx.strokeStyle = color;
-    ctx.stroke();
-  }
-  this.distance = (line1, line2, color) => {
-    drawStroke(line1, line2, color);
-  }
-  this.distanceCount = (line1, line2, color) => {
-    let d = Math.sqrt(Math.abs(line1[1] - line2[1]) + Math.abs(line1[0] - line2[0]));
-    ctx.fillStyle = color;
-    ctx.font = "15px Arial";
-    ctx.fillText(d, line2[0] * blockSize, (line2[1] * blockSize) - 10);
-  }
-  this.distancePerpendicular = (line1, line2, line3, line4, color) => {
-    ctx.fillStyle = color;
-    ctx.font = "15px Arial";
-    drawStroke(line1, line2, color);
-    ctx.fillText([line2], line2[0] * blockSize, (line2[1] * blockSize) - 30);
-
-    drawStroke(line3, line4, color);
-    ctx.fillText([line4], line4[0] * blockSize, (line4[1] * blockSize) + 30);
-  }
 }
 
 function Game(params) {
@@ -65,8 +38,9 @@ function Game(params) {
 
   
   function drawBoard() {
-    //make the board black 
+    //make the board black, it is not nessery if the backgroundColor (body)
     ctx.canvas.style.backgroundColor= "#000000";
+    ctx.canvas.style.border="5px solid #ffff"
     ctx.canvas.width = ctx.canvas.height = size;
     
   
@@ -192,12 +166,9 @@ function Game(params) {
   function update() {
     snakeMove();
     drawBoard();
-    utils.showGrid && drawGrid();
     drawSnake();
     drawFood();
-  //  utils.distance && utilities.distance(snake[0], food, "blue");
-    //utils.distanceCount && utilities.distanceCount(snake[0], food, "blue");
-   // utils.distancePerpendicular && utilities.distancePerpendicular(snake[0], [food[0], snake[0][1]], snake[0], [snake[0][0], food[1]], "blue");
+  
     aStar && runAStar(move);
   }
 
