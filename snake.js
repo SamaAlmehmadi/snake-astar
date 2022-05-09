@@ -55,49 +55,27 @@ function Game(params) {
   var snake = [
     [1, 0],
     [0, 0]
-  ]; // Snake body
+  ]; 
+  
+  // Snake body
   var direction = aStar ? false : 39; // Snake direction in keycode
   var food = []; // Food position [x, y]
   var scoreEl = document.querySelector("#score"); // HTML display score
   var score = 0; // Score
 
-  // Sound Effect
-  var eatedSound, gameOverSound;
-  function setSound() {
-    eatedSound = new Sound("sound/eated.mp3");
-    gameOverSound = new Sound("sound/gameover.mp3");
-  }
-
-  function Sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function() {
-      this.sound.play();
-    }
-    this.stop = function() {
-      this.sound.pause();
-    }
-  }
-
-  function gameOver() {
-    clearInterval(interval);
-    clearInterval(timeInterval);
-    gameOverSound.play();
-  }
-
+  
   function drawBoard() {
+    //make the board black 
+    ctx.canvas.style.backgroundColor= "#000000";
     ctx.canvas.width = ctx.canvas.height = size;
-    ctx.canvas.style.border = "1px solid #DDD";
+    
+  
   }
 
   function drawGrid() {
     for (var x = 0; x < totalBlock; x++) {
       for (var y = 0; y < totalBlock; y++) {
-        ctx.strokeStyle = "#DDD";
+        ctx.strokeStyle = " 5px solid #ffff";
         ctx.strokeRect(x * blockSize, y * blockSize, blockSize, blockSize);
       }
     }
@@ -110,11 +88,11 @@ function Game(params) {
 
   function drawSnake() {
     for (var i = 1; i < snake.length; i++) {
-      ctx.strokeStyle = "#DDD";
+      ctx.strokeStyle = "#fff";
       ctx.strokeRect(snake[i][0] * blockSize, snake[i][1] * blockSize, blockSize, blockSize);
-      drawRect(snake[i][0] * blockSize, snake[i][1] * blockSize, "#000");
+      drawRect(snake[i][0] * blockSize, snake[i][1] * blockSize, "#26D701");
     }
-    drawRect(snake[0][0] * blockSize, snake[0][1] * blockSize, "green");
+    drawRect(snake[0][0] * blockSize, snake[0][1] * blockSize, "#00AB08");
   }
 
   function randomFood() {
@@ -134,7 +112,6 @@ function Game(params) {
   }
 
   function eated() {
-    eatedSound.play();
     score += 1;
     scoreEl.innerHTML = score;
     snake.push(food);
@@ -202,7 +179,6 @@ function Game(params) {
   }
 
   // INIT
-  setSound();
   utils.showGrid && drawGrid();
   drawSnake();
   randomFood();
@@ -219,9 +195,9 @@ function Game(params) {
     utils.showGrid && drawGrid();
     drawSnake();
     drawFood();
-    utils.distance && utilities.distance(snake[0], food, "blue");
-    utils.distanceCount && utilities.distanceCount(snake[0], food, "blue");
-    utils.distancePerpendicular && utilities.distancePerpendicular(snake[0], [food[0], snake[0][1]], snake[0], [snake[0][0], food[1]], "blue");
+  //  utils.distance && utilities.distance(snake[0], food, "blue");
+    //utils.distanceCount && utilities.distanceCount(snake[0], food, "blue");
+   // utils.distancePerpendicular && utilities.distancePerpendicular(snake[0], [food[0], snake[0][1]], snake[0], [snake[0][0], food[1]], "blue");
     aStar && runAStar(move);
   }
 
@@ -577,4 +553,3 @@ function Game(params) {
   };
 
 });
-// END ASTAR ALGORITM

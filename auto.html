@@ -4,18 +4,14 @@
 <head>
   <meta charset="utf-8">
   <title>Snake ASTAR Auto</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<style>
-  body {
-    text-align: center;
-    font-family: calibri;
-  }
-</style>
-<body>
-  <h2>arsan.dev Snake AI with A* Algorithm</h2>
+
+<body >
+  <h2> Snake Game  with A* Algorithm</h2>
   <canvas></canvas>
   <h1>Score: <span id="score">0</span> | Time: <span id="time">0</span>s</h1>
-  <p><b>Mode: <font color="red">Automatic (BOT)</font></b></p>
+  
   <button type="button" onclick="location.reload()">Refresh</button>
   <button type="button" id="play">Play</button>
   <button type="button" id="pause" hidden>Pause</button>
@@ -26,10 +22,10 @@
       blockSize: 15,
       fps: 25,
       utils: {
-        showGrid: true,
-        distance: true,
-        distanceCount: true,
-        distancePerpendicular: true
+        showGrid: false,
+        distance: false,
+        distanceCount: false,
+        distancePerpendicular: false
       },
       aStar: true
     });

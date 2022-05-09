@@ -1,0 +1,13 @@
+*{
+    font-family: "Times New Roman", Times, serif;
+
+}
+ 
+ 
+ body {
+    text-align: center;
+    background-color: black; 
+  }
+  h1 , h2 {
+      color: aliceblue;
+  }
