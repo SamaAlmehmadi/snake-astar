@@ -1,6 +1,6 @@
 ## Snake Bot with A* Algorithm
 
-<center><img src="https://lh3.googleusercontent.com/-9OlsnWlfcmk/YABdtG1GR4I/AAAAAAAAK1E/PveFciPdnZs0VMvWSdvTekeaFBHXsZAywCLcBGAsYHQ/image.png"/></center>
+
 
 
 ### Usage
@@ -46,6 +46,3 @@ new Game();
 - open `auto.html` in your browser.
 - click play button and let snake run with a* algorithm.
 
-**Manual Mode:**
-- open `manual.html` in your browser
-- use arrow key on keyboard ⬅⬆➡⬇ to control snake.
